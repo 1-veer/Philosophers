@@ -4,7 +4,7 @@ int main (int ac, char *av[])
 {
     if (ac == 5 || ac == 6 )
     {
-        //parsing (&my_container , av)
+        parsing (&my_container , av)
         //inint (&my_container);
         //simulation (&my_container);
         //clean_up;
@@ -14,3 +14,4 @@ int main (int ac, char *av[])
         error("error_message");
     }
 }
+

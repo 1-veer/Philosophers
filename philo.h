@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <stdbool.h>
+#include <limits.h>
 
 typedef struct container my_container;
 
@@ -30,11 +31,12 @@ typedef struct philo
 
 struct container
 {
-    long nbr_philos;
-    long time_for_eating;
+    long number_of_philosophers;
+    long time_to_die;
+    long time_to_eat;
+    long time_to_sleep;
+    long number_of_times_each_philosopher_must_eat;
     long time_for_thinking;
-    long time_for_sleeping;
-    long meals_limit;
     long start;
     bool end;
     my_fork *fork;
@@ -45,4 +47,4 @@ struct container
 
 void error (char *str);
 
-#endif
+#endif  
