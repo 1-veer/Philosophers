@@ -1,5 +1,5 @@
 CC = cc
-Cflags = -Wall -Wextra -Werror
+Cflags = -Wall -Wextra -Werror -g
 NAME = philosophers
 RM = rm -f
 

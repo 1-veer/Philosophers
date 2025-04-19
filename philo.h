@@ -46,5 +46,6 @@ struct container
 
 
 void error (char *str);
+int parsing(my_container *container , char **argv);
 
 #endif  

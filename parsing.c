@@ -1,6 +1,6 @@
 #include "philo.h"
 
-long	ft_atol(const char *str)
+long	ft_atol(char *str)
 {
 	long	result;
 	int		sign;
@@ -9,6 +9,7 @@ long	ft_atol(const char *str)
 	result = 0;
 	sign = 1;
 	i = 0;
+	
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v' || str[i] == '\f'
 		|| str[i] == '\r' || str[i] == '\n')
 		i++;
@@ -26,18 +27,20 @@ long	ft_atol(const char *str)
 	}
 	return (result * sign);
 }
+
 void init_container(my_container *container, char **argv)
 {
 	if (!argv || !*argv)
 		return ;
-	
+	// if (argv[1] == NULL || argv[2] == NULL || argv[3] == NULL
+	// 	|| argv[4] == NULL || argv[5] == NULL || argv[6] == NULL)
+	// 	return ;
 	container->number_of_philosophers = ft_atol(argv[2]);
 	container->time_to_die = ft_atol(argv[3]);
 	container->time_to_eat = ft_atol(argv[4]);
 	container->time_to_sleep = ft_atol(argv[5]);
 	if (argv[6])
 		container->number_of_times_each_philosopher_must_eat = ft_atol(argv[6]);
-
 }
 
 int fix_args (my_container *container)
@@ -62,7 +65,9 @@ int parsing(my_container *container , char **argv)
 	init_container(container, argv);
 	
 	if (fix_args(container))
-		return (0);
+		return (1);
+	
+	return (0);
 }
 
 
