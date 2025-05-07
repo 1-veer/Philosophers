@@ -17,7 +17,6 @@
 			error("values_error");
 			return (1);
 		}
-		//inint (&my_container);
 		//simulation (&my_container);
 		//clean_up;
 	
