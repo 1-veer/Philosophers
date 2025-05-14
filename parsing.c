@@ -30,7 +30,7 @@ long	ft_atol(char *str)
 	return (result * sign);
 }
 
-void init_container(my_container *container, char **argv)
+void init_input(my_container *container, char **argv)
 {
 	if (!argv || !*argv)
 		return ;
@@ -66,7 +66,7 @@ int fix_args (my_container *container)
 
 int parsing(my_container *container , char **argv)
 {
-	init_container(container, argv);
+	init_input(container, argv);
 	
 	if (fix_args(container))
 		return (1);
