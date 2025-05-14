@@ -6,8 +6,8 @@ long	ft_atol(char *str)
 	int		sign;
 	int		i;
 
-	if (!str || !*str)
-		return (0);
+	// if (!str || !*str)
+	// 	return (0);
 	result = 0;
 	sign = 1;
 	i = 0;
