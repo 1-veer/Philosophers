@@ -3,7 +3,7 @@ Cflags = -Wall -Wextra -Werror -g
 NAME = philosophers
 RM = rm -f
 
-SRCS = main.c parsing.c utils.c 
+SRCS = main.c init.c parsing.c utils.c simulation.c 
 
 OBJS = $(SRCS:.c=.o)
 

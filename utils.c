@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void error(char *str)
+void error_message(char *str)
 {
     int i = 0;
     while (str[i])
@@ -9,6 +9,7 @@ void error(char *str)
         i++;
     }
     write(2, "\n", 1);
+    exit(EXIT_FAILURE);
 }
 
 long get_time(void)

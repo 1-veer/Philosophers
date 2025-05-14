@@ -30,35 +30,35 @@ long	ft_atol(char *str)
 	return (result * sign);
 }
 
-void init_input(my_container *container, char **argv)
+void put_input (my_container *container, char **argv)
 {
 	if (!argv || !*argv)
 		return ;
 
-	container->number_of_philosophers = ft_atol(argv[1]);
-	container->time_to_die = ft_atol(argv[2]);
-	container->time_to_eat = ft_atol(argv[3]);
-	container->time_to_sleep = ft_atol(argv[4]);
+	container->num_of_philos = ft_atol(argv[1]);
+	container->time_to_die = ft_atol(argv[2]) * 1000;
+	container->time_to_eat = ft_atol(argv[3]) * 1000;
+	container->time_to_sleep = ft_atol(argv[4]) * 1000;
 	if (argv[5])
-		container->number_of_times_each_philosopher_must_eat = ft_atol(argv[5]);
+		container->num_must_eat = ft_atol(argv[5]) ;
 	else
-		container->number_of_times_each_philosopher_must_eat = -1;
+		container->num_must_eat = -1;
 
 }
 
-int fix_args (my_container *container)
+int check_input (my_container *container)
 {
-	if (container->number_of_philosophers <= 0 
-		|| container->number_of_philosophers > 200)
+	if (container->num_of_philos <= 0 
+		|| container->num_of_philos > 200)
 		return	(1);
-	else if (container->time_to_die < 60 
-			|| container->time_to_eat < 60
-			|| container->time_to_sleep < 60)
+	else if (container->time_to_die < 60000 
+			|| container->time_to_eat < 60000
+			|| container->time_to_sleep < 60000)
 		return (1);
 	//limit high values
-	else if (container->number_of_times_each_philosopher_must_eat != -1 && 
-		( container->number_of_times_each_philosopher_must_eat <= 0
-			|| container->number_of_times_each_philosopher_must_eat > 200))
+	else if (container->num_must_eat != -1 && 
+		( container->num_must_eat <= 0
+			|| container->num_must_eat > 200))
 	return (1);
 
 	return (0);
@@ -66,9 +66,9 @@ int fix_args (my_container *container)
 
 int parsing(my_container *container , char **argv)
 {
-	init_input(container, argv);
+	put_input(container, argv);
 	
-	if (fix_args(container))
+	if (check_input(container))
 		return (1);
 	
 	return (0);
