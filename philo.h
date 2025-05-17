@@ -8,44 +8,50 @@
 #include <stdbool.h>
 #include <limits.h>
 
-typedef struct container my_container;
 
-typedef struct fork
+
+typedef struct s_container t_container;
+typedef pthread_mutex_t mutex;
+
+
+typedef struct s_mtx
 {
-    pthread_mutex_t fork;
-    int id_fork;
-}   my_fork;  
+	mutex	*print_mtx;
+	mutex	*time_mtx;
+	mutex	*meals_mtx;
+	mutex	*dead_mtx;
+	mutex	*done_mtx;
+}	t_mutex;
 
-
-typedef struct philo
+typedef struct s_philo
 {
+    t_container *container;
     int philo_id;
-    long num_meals;
-    bool done_eating;  
-    long last_meal_time;
-    my_fork *right_fork;
-    my_fork *left_fork;
-    my_container *container;
     pthread_t thread_id; // repersenting a philo by a thread 
-}   my_philo;
+    long meal_counter;
+    long last_meal_time;
+    mutex *right_fork;
+    mutex *left_fork;
+}   t_philo;
 
-struct container
+struct s_container
 {
     long num_of_philos;
     long time_to_die;
     long time_to_eat;
     long time_to_sleep;
     long num_must_eat;
-    long time_for_thinking;
+    bool dead;
+    bool done_eating;
     long start;
-    bool end;
-    my_fork *fork;
-    my_philo *philo;
+    mutex *fork;
+    t_mutex *mutex;
+    t_philo *philo;
 };
 
 
-
+void init_container(t_container *my_container);
 void error_message(char *str);
-int parsing(my_container *container , char **argv);
+int parsing(t_container *container, char **argv);
 
 #endif  
