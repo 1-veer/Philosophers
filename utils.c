@@ -31,3 +31,23 @@ void *allocate(size_t size)
         error_message("malloc error");
     return (ptr);
 }
+void my_usleep(long time)
+{
+    long t;
+
+    t = gettime();
+    while (1)
+    {
+        if (gettime() - t >= time)
+            break;
+        usleep(100);
+    }
+}
+
+void printing(t_philo *philo, char *str)
+{
+    long time;
+    
+    time = gettime() - philo->container->start;
+    printf("%ldms --> p hilo'%d' %s\n", time, philo->philo_id, str);
+}

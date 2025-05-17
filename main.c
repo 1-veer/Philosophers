@@ -13,7 +13,7 @@
 
 		having_seats(&my_container );
 		dinner(&my_container);
-		doing_dishes(&my_container);
+		//doing_dishes(&my_container);
 
 		return (EXIT_SUCCESS);
 	}

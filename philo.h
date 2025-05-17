@@ -7,6 +7,7 @@
 #include <sys/time.h>
 #include <stdbool.h>
 #include <limits.h>
+#include <stdio.h>
 
 
 
@@ -53,5 +54,14 @@ struct s_container
 void init_container(t_container *my_container);
 void error_message(char *str);
 int parsing(t_container *container, char **argv);
+
+void having_seats(t_container *my_container);
+void *dinner(t_container *container);
+
+void my_usleep(long time);
+void printing(t_philo *philo, char *str);
+void *allocate(size_t size);
+long gettime(void);
+void get_forks (t_philo *philo, t_container *container, int position);
 
 #endif  

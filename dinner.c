@@ -1,5 +1,28 @@
 #include "philo.h"
 
+void    one_philo_case(t_philo *philo)
+{
+    printing(philo, "took a fork");
+    my_usleep(philo->container->time_to_die);
+    printing(philo, "died");
+}
+
+void *simulation(void *arg)
+{
+    t_philo *philo;
+    philo = (t_philo *)arg;
+    if (philo->container->num_of_philos == 1)
+    {
+        one_philo_case(philo);
+        return (NULL);
+    }
+    // while (1)
+    // {
+    //     eat(philo),s_leep(philo),think(philo);
+    //     checks(philo);
+    // }
+    return (NULL);
+}
 void *dinner(t_container *container)
 {
     int i;
@@ -9,7 +32,7 @@ void *dinner(t_container *container)
     i = 0;
     while (i < n)
     {
-        pthread_create(&container->philo[i].thread_id, NULL, &simulation, &container->philo[i]);
+        pthread_create(&container->philo[i].thread_id, NULL, simulation, &container->philo[i]);
         i++;
     }
     i = 0;
@@ -20,3 +43,6 @@ void *dinner(t_container *container)
     }
     return (NULL);
 }
+
+
+
