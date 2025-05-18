@@ -16,20 +16,23 @@ void *simulation(void *arg)
         one_philo_case(philo);
         return (NULL);
     }
-    // while (1)
-    // {
-    //     eat(philo),s_leep(philo),think(philo);
-    //     checks(philo);
-    // }
+    while (1)
+    {
+        eat(philo),s_leep(philo),think(philo);
+        if(checks(philo))
+            break ;
+    }
     return (NULL);
 }
 void *dinner(t_container *container)
 {
     int i;
     int n;
-    
+    pthread_t *my_monitor;
+
     n = container->num_of_philos;
     i = 0;
+    pthread_create(&my_monitor, NULL, simulation, container);
     while (i < n)
     {
         pthread_create(&container->philo[i].thread_id, NULL, simulation, &container->philo[i]);
@@ -41,6 +44,7 @@ void *dinner(t_container *container)
         pthread_join(container->philo[i].thread_id, NULL);
         i++;
     }
+    pthread_join(my_monitor, NULL);
     return (NULL);
 }
 

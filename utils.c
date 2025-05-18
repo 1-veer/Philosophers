@@ -49,5 +49,5 @@ void printing(t_philo *philo, char *str)
     long time;
     
     time = gettime() - philo->container->start;
-    printf("%ldms --> p hilo'%d' %s\n", time, philo->philo_id, str);
+    printf("after %ldms --> philo'%d' %s\n", time, philo->philo_id, str);
 }

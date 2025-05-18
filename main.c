@@ -11,10 +11,9 @@
 		if (parsing(&my_container, av))
 			error_message("values_error");	
 
-		having_seats(&my_container );
+		having_seats(&my_container);
 		dinner(&my_container);
 		//doing_dishes(&my_container);
 
 		return (EXIT_SUCCESS);
 	}
-	
