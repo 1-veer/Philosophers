@@ -22,13 +22,16 @@ long gettime(void)
     return (time_in_ms);
 }
 
-void *allocate(size_t size)
+void *allocate(size_t size, t_container *container)
 {
     void *ptr;
-// might add the container as a parameter so that we can free here 
     ptr = malloc(size);
     if (!ptr)
+    {
         error_message("malloc error");
+        doing_dishes(container);
+        return (NULL);
+    }
     return (ptr);
 }
 void my_usleep(long time)
@@ -40,7 +43,7 @@ void my_usleep(long time)
     {
         if (gettime() - t >= time)
             break;
-        usleep(100);
+        usleep(50);
     }
 }
 
@@ -49,5 +52,5 @@ void printing(t_philo *philo, char *str)
     long time;
     
     time = gettime() - philo->container->start;
-    printf("after %ldms --> philo'%d' %s\n", time, philo->philo_id, str);
+    printf("%ld %d %s\n", time, philo->philo_id, str);
 }

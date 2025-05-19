@@ -4,7 +4,8 @@ void forks_init(t_container *container)
 {
     int i;
     
-    container->fork = allocate(sizeof(mutex) * container->num_of_philos);
+    container->fork = allocate(sizeof(mutex) 
+            * container->num_of_philos, container);
     i = 0;
     while (i < container->num_of_philos)
     {
@@ -15,16 +16,16 @@ void forks_init(t_container *container)
 
 void mutex_init(t_container *container)
 {
-    container->mutex->print_mtx = allocate(sizeof(mutex));
-    container->mutex->time_mtx = allocate(sizeof(mutex));
-    container->mutex->meals_mtx = allocate(sizeof(mutex));
-    container->mutex->dead_mtx = allocate(sizeof(mutex));
-    container->mutex->done_mtx = allocate(sizeof(mutex));
-    pthread_mutex_init(container->mutex->print_mtx, NULL);
-    pthread_mutex_init(container->mutex->time_mtx, NULL);
-    pthread_mutex_init(container->mutex->meals_mtx, NULL);
-    pthread_mutex_init(container->mutex->dead_mtx, NULL);
-    pthread_mutex_init(container->mutex->done_mtx, NULL);
+    container->mutexes->print_mtx = allocate(sizeof(mutex), container);
+    container->mutexes->time_mtx = allocate(sizeof(mutex), container);
+    container->mutexes->meals_mtx = allocate(sizeof(mutex), container);
+    container->mutexes->dead_mtx = allocate(sizeof(mutex), container);
+    container->mutexes->done_mtx = allocate(sizeof(mutex), container);
+    pthread_mutex_init(container->mutexes->print_mtx, NULL);
+    pthread_mutex_init(container->mutexes->time_mtx, NULL);
+    pthread_mutex_init(container->mutexes->meals_mtx, NULL);
+    pthread_mutex_init(container->mutexes->dead_mtx, NULL);
+    pthread_mutex_init(container->mutexes->done_mtx, NULL);
 }
 
 void philos_init(t_container *container)
@@ -33,7 +34,7 @@ void philos_init(t_container *container)
     int i;
     
     i = 0;
-    tmp_philo = allocate(sizeof(t_philo) * container->num_of_philos);
+    tmp_philo = allocate(sizeof(t_philo) * container->num_of_philos, container);
     while(i < container->num_of_philos)
     {
         tmp_philo[i].philo_id = i+1;
@@ -67,10 +68,10 @@ void get_forks (t_philo *philo, t_container *container, int position)
 
 void having_seats(t_container *my_container)
 {
-    my_container->dead = false;
+    my_container->is_dead = false;
     my_container->done_eating = false;
     my_container->start = gettime();
-    my_container->mutex = allocate(sizeof(t_mutex));
+    my_container->mutexes = allocate(sizeof(t_mutex), my_container);
     forks_init(my_container);
     mutex_init(my_container);
     philos_init(my_container);

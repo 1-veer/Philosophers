@@ -1,9 +1,10 @@
-CC = cc
+CC = cc -fsanitize=thread -g -pthread
 Cflags = -Wall -Wextra -Werror -g
 NAME = philosophers
 RM = rm -f
 
-SRCS = main.c  parsing.c utils.c  dinner.c doing_dishes.c having_seats.c
+SRCS = main.c parsing.c having_seats.c dinner.c doing_dishes.c \
+		eat_sleep_think.c checks.c utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

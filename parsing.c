@@ -59,8 +59,10 @@ int check_input (t_container *container)
 	else if (container->num_must_eat != -1 && 
 		( container->num_must_eat <= 0
 			|| container->num_must_eat > 200))
-	return (1);
-
+		return (1);
+	if (container->num_of_philos == -1 || container->time_to_die == -1
+		|| container->time_to_eat == -1 || container->time_to_sleep == -1)
+		return (1);
 	return (0);
 }
 
