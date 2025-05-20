@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/20 19:04:35 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/05/20 20:05:13 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	scanning(t_container *container, int n)
 	pthread_mutex_lock(container->mutexes->time_mtx);
 	t = gettime() - container->philo[n].last_meal_time;
 	pthread_mutex_unlock(container->mutexes->time_mtx);
-	if (container->time_to_die <= t)
+	if (container->time_to_die < t)
 	{
 		pthread_mutex_lock(container->mutexes->print_mtx);
 		printing(&container->philo[n], "died");
@@ -72,7 +72,7 @@ void	*monitor(void *ptr)
 	while (true)
 	{
 		if (done_eating(container))
-			break ;
+			return (NULL);
 		if (i >= container->num_of_philos)
 			i = 0;
 		if (scanning(container, i))
