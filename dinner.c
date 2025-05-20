@@ -1,15 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dinner.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/20 19:02:34 by ayoub             #+#    #+#             */
+/*   Updated: 2025/05/20 19:04:35 by ayoub            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-void    one_philo_case(t_philo *philo)
+void	one_philo_case(t_philo *philo)
 {
 	printing(philo, "has taken a fork");
 	my_usleep(philo->container->time_to_die);
 	printing(philo, "died");
 }
 
-void *simulation(void *arg)
+void	*simulation(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
+
 	philo = (t_philo *)arg;
 	if (philo->container->num_of_philos == 1)
 	{
@@ -18,17 +31,19 @@ void *simulation(void *arg)
 	}
 	while (true)
 	{
-		eat(philo),s_leep(philo),think(philo);
-		if(checks(philo->container))
-		break ;
+		eat(philo);
+		s_leep(philo);
+		think(philo);
+		if (checks(philo->container))
+			break ;
 	}
 	return (NULL);
 }
 
-int scanning(t_container *container , int n)
+int	scanning(t_container *container, int n)
 {
-	long t;
-	
+	long	t;
+
 	pthread_mutex_lock(container->mutexes->time_mtx);
 	t = gettime() - container->philo[n].last_meal_time;
 	pthread_mutex_unlock(container->mutexes->time_mtx);
@@ -45,18 +60,18 @@ int scanning(t_container *container , int n)
 	return (0);
 }
 
-void *monitor (void *ptr)
+void	*monitor(void *ptr)
 {
-	t_container *container;
-	int i;
-	
+	t_container	*container;
+	int			i;
+
 	container = (t_container *)ptr;
 	if (container->num_of_philos == 1)
-	return (NULL);
+		return (NULL);
 	i = 0;
-	while(true)
-   {
-		if(done_eating(container))
+	while (true)
+	{
+		if (done_eating(container))
 			break ;
 		if (i >= container->num_of_philos)
 			i = 0;
@@ -68,11 +83,11 @@ void *monitor (void *ptr)
 	return (NULL);
 }
 
-void dinner(t_container *container)
+void	dinner(t_container *container)
 {
-	int i;
-	int n;
-	pthread_t my_monitor;
+	int			i;
+	int			n;
+	pthread_t	my_monitor;
 
 	n = container->num_of_philos;
 	i = 0;
@@ -81,7 +96,7 @@ void dinner(t_container *container)
 	while (i < n)
 	{
 		pthread_create(&container->philo[i].thread_id, NULL,
-			 &simulation, &container->philo[i]);
+			&simulation, &container->philo[i]);
 		i++;
 	}
 	i = 0;
@@ -92,4 +107,3 @@ void dinner(t_container *container)
 	}
 	pthread_join(my_monitor, NULL);
 }
-
