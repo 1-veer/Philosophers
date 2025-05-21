@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:59 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/20 20:01:41 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/05/21 20:06:51 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	my_usleep(long time)
 	{
 		if (gettime() - t >= time)
 			break ;
-		usleep(50);
+		usleep(100);
 	}
 }
 

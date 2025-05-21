@@ -1,4 +1,4 @@
-CC = cc -pthread
+CC = cc -pthread 
 Cflags = -Wall -Wextra -Werror -g
 NAME = philosophers
 RM = rm -f

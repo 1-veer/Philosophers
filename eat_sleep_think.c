@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eat_sleep_think.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/20 19:06:10 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/05/21 20:19:22 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	eat(t_philo *philo)
 	container = philo->container;
 	if (checks(container))
 		return ;
-	if (philo->thread_id % 2 != 0)
+	if (philo->philo_id % 2 != 0)
 		my_usleep(5);
 	pthread_mutex_lock(philo->right_fork);
 	pthread_mutex_lock(philo->left_fork);
