@@ -11,27 +11,17 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) 
-		@$(CC) $(Cflags) $(OBJS) -o $(NAME)
-		@echo "--- Compiling the executable ---"
+		$(CC) $(Cflags) $(OBJS) -o $(NAME)
 
 %.o: %.c philo.h
-		@$(CC) $(Cflags) -c $< -o $@
-
-
-$(OBJS): | print
-
-print:
-	@echo "--- Compiling *.c ---"
+		$(CC) $(Cflags) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJS)
-	@echo "--- Cleaning up object files ---"
+	$(RM) $(OBJS)
 
 fclean: clean
-	@$(RM) $(NAME)
-	@echo "--- Cleaning up $(NAME)--- "
+	$(RM) $(NAME)
 
 re: fclean all
-	@echo "--- Rebuilding $(NAME) ---"
 
 .PHONY: all clean fclean re
