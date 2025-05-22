@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/22 17:05:09 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 17:27:13 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	eat(t_philo *philo)
 	if (checks(container))
 		return ;
 	if (philo->philo_id % 2 != 0)
-		my_usleep(5, container);	
+		my_usleep(5, container);
 	pthread_mutex_lock(philo->right_fork);
 	pthread_mutex_lock(philo->left_fork);
 	pthread_mutex_lock(container->mutexes->print_mtx);
