@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:55 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/22 15:48:47 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 17:02:01 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ struct s_container
 	long		time_to_sleep;
 	long		num_must_eat;
 	bool		is_dead;
-	bool		done_eating;
 	long		start;
 	t_m			*fork;
 	t_mtx		*mutexes;

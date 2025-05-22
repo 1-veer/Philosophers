@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:10 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/21 20:01:26 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 17:01:56 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	get_forks(t_philo *philo, t_container *container, int position)
 void	having_seats(t_container *my_container)
 {
 	my_container->is_dead = false;
-	my_container->done_eating = false;
 	my_container->start = gettime();
 	my_container->mutexes = allocate(sizeof(t_mtx), my_container);
 	forks_init(my_container);
