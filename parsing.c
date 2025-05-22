@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:44 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/20 19:01:45 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/05/22 17:44:57 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,6 @@ int	check_input(t_container *container)
 	if (container->time_to_die < 60
 		|| container->time_to_eat < 60
 		|| container->time_to_sleep < 60)
-		return (1);
-	if (container->num_must_eat != -1
-		&& (container->num_must_eat <= 0 || container->num_must_eat > 200))
 		return (1);
 	return (0);
 }
