@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:34 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/21 21:03:29 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:19:23 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	one_philo_case(t_philo *philo)
 {
 	printing(philo, "has taken a fork");
-	my_usleep(philo->container->time_to_die);
+	my_usleep(philo->container->time_to_die, philo->container);
 	printing(philo, "died");
 }
 
@@ -32,7 +32,7 @@ void	*simulation(void *arg)
 	while (true)
 	{
 		if (checks(philo->container))
-			return NULL;
+			return (NULL);
 		eat(philo);
 		s_leep(philo);
 		think(philo);
@@ -78,7 +78,7 @@ void	*monitor(void *ptr)
 		if (scanning(container, i))
 			return (NULL);
 		i++;
-		my_usleep(1);
+		my_usleep(1, container);
 	}
 	return (NULL);
 }

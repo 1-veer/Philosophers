@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:59 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/21 20:06:51 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:47:31 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	*allocate(size_t size, t_container *container)
 	return (ptr);
 }
 
-void	my_usleep(long time)
+void	my_usleep(long time, t_container *container)
 {
 	long	t;
 
@@ -58,6 +58,8 @@ void	my_usleep(long time)
 	while (1)
 	{
 		if (gettime() - t >= time)
+			break ;
+		if (checks(container))
 			break ;
 		usleep(100);
 	}

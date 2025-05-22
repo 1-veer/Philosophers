@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:13 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/21 20:19:22 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:19:29 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	eat(t_philo *philo)
 	if (checks(container))
 		return ;
 	if (philo->philo_id % 2 != 0)
-		my_usleep(5);
+		my_usleep(5, container);
 	pthread_mutex_lock(philo->right_fork);
 	pthread_mutex_lock(philo->left_fork);
 	pthread_mutex_lock(container->mutexes->print_mtx);
@@ -28,13 +28,13 @@ void	eat(t_philo *philo)
 	printing(philo, "has taken a fork");
 	printing(philo, "is eating");
 	pthread_mutex_unlock(container->mutexes->print_mtx);
-	pthread_mutex_lock(container->mutexes->meals_mtx);
-	philo->meal_counter += 1;
-	pthread_mutex_unlock(container->mutexes->meals_mtx);
 	pthread_mutex_lock(container->mutexes->time_mtx);
 	philo->last_meal_time = gettime();
 	pthread_mutex_unlock(container->mutexes->time_mtx);
-	my_usleep(container->time_to_eat);
+	pthread_mutex_lock(container->mutexes->meals_mtx);
+	philo->meal_counter += 1;
+	pthread_mutex_unlock(container->mutexes->meals_mtx);
+	my_usleep(container->time_to_eat, container);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 }
@@ -49,7 +49,7 @@ void	s_leep(t_philo *philo)
 	pthread_mutex_lock(container->mutexes->print_mtx);
 	printing(philo, "is sleeping");
 	pthread_mutex_unlock(container->mutexes->print_mtx);
-	my_usleep(container->time_to_sleep);
+	my_usleep(container->time_to_sleep, container);
 }
 
 void	think(t_philo *philo)

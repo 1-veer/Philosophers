@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:55 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/20 19:18:26 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/05/22 15:48:47 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	having_seats(t_container *my_container);
 void	dinner(t_container *container);
 void	doing_dishes(t_container *container);
 
-void	my_usleep(long time);
+void	my_usleep(long time, t_container *container);
 void	printing(t_philo *philo, char *str);
 void	*allocate(size_t size, t_container *container);
 long	gettime(void);
