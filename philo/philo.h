@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:55 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/22 20:28:05 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/24 19:22:32 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_mtx
 	t_m	*time_mtx;
 	t_m	*meals_mtx;
 	t_m	*dead_mtx;
-	t_m	*done_mtx;
 }	t_mtx;
 
 typedef struct s_philo

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:40 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/22 17:01:52 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/24 19:22:53 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	done_eating(t_container *container)
 
 	i = 0;
 	done = 0;
-	pthread_mutex_lock(container->mutexes->done_mtx);
 	pthread_mutex_lock(container->mutexes->meals_mtx);
 	while (i < container->num_of_philos)
 	{
@@ -41,11 +40,9 @@ int	done_eating(t_container *container)
 	}
 	if (done == container->num_of_philos && container->num_must_eat != -1)
 	{
-		pthread_mutex_unlock(container->mutexes->done_mtx);
 		pthread_mutex_unlock(container->mutexes->meals_mtx);
 		return (1);
 	}
-	pthread_mutex_unlock(container->mutexes->done_mtx);
 	pthread_mutex_unlock(container->mutexes->meals_mtx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:22 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/20 19:06:33 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/05/24 19:22:59 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	destroy_mtx_struct(t_container *container)
 	free(container->mutexes->meals_mtx);
 	pthread_mutex_destroy(container->mutexes->dead_mtx);
 	free(container->mutexes->dead_mtx);
-	pthread_mutex_destroy(container->mutexes->done_mtx);
-	free(container->mutexes->done_mtx);
 }
 
 void	doing_dishes(t_container *container)

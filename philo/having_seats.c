@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   having_seats.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:02:10 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/22 17:01:56 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/24 19:23:05 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ void	mutex_init(t_container *container)
 	container->mutexes->time_mtx = allocate(sizeof(t_m), container);
 	container->mutexes->meals_mtx = allocate(sizeof(t_m), container);
 	container->mutexes->dead_mtx = allocate(sizeof(t_m), container);
-	container->mutexes->done_mtx = allocate(sizeof(t_m), container);
 	pthread_mutex_init(container->mutexes->print_mtx, NULL);
 	pthread_mutex_init(container->mutexes->time_mtx, NULL);
 	pthread_mutex_init(container->mutexes->meals_mtx, NULL);
 	pthread_mutex_init(container->mutexes->dead_mtx, NULL);
-	pthread_mutex_init(container->mutexes->done_mtx, NULL);
 }
 
 void	philos_init(t_container *container)
