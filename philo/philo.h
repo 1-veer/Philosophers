@@ -6,7 +6,7 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:55 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/22 17:02:01 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:28:05 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ struct s_container
 };
 
 void	init_container(t_container *my_container);
-void	error_message(char *str);
+void	*error_message(char *str);
 int		parsing(t_container *container, int ac, char **av);
 
 void	having_seats(t_container *my_container);

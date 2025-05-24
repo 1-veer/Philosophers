@@ -6,13 +6,13 @@
 /*   By: abougati <abougati@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:01:59 by ayoub             #+#    #+#             */
-/*   Updated: 2025/05/22 15:47:31 by abougati         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:27:02 by abougati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	error_message(char *str)
+void	*error_message(char *str)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ void	error_message(char *str)
 		i++;
 	}
 	write(2, "\n", 1);
-	exit(EXIT_FAILURE);
+	return (NULL);
 }
 
 long	gettime(void)

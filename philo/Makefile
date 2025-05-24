@@ -1,6 +1,6 @@
 CC = cc -pthread 
-Cflags = -Wall -Wextra -Werror -g
-NAME = philosophers
+Cflags = -Wall -Wextra -Werror 
+NAME = philo
 RM = rm -f
 
 SRCS = main.c parsing.c having_seats.c dinner.c doing_dishes.c \
